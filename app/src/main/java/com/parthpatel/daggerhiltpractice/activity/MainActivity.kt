@@ -1,5 +1,6 @@
 package com.parthpatel.daggerhiltpractice.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -10,6 +11,7 @@ import com.parthpatel.daggerhiltpractice.R
 import com.parthpatel.daggerhiltpractice.api.RetrofitService
 import com.parthpatel.daggerhiltpractice.databinding.ActivityMainBinding
 import com.parthpatel.daggerhiltpractice.model.UserModel
+import com.parthpatel.daggerhiltpractice.service.MusicService
 import com.parthpatel.daggerhiltpractice.view_model.TestViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
@@ -53,6 +55,17 @@ class MainActivity : AppCompatActivity() {
 
         loadImages()
         fetchUserData()
+        handleListener()
+    }
+
+    private fun handleListener() {
+        mainBinding.btnStartService.setOnClickListener {
+            startService(Intent(this, MusicService::class.java))
+        }
+
+        mainBinding.btnStopService.setOnClickListener {
+            stopService(Intent(this, MusicService::class.java))
+        }
     }
 
     private fun fetchUserData() {

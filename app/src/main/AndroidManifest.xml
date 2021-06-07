@@ -12,6 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DaggerHiltPractice">
+
+        <service android:name=".service.MusicService"/>
+
         <activity android:name=".activity.ContainerActivity">
             <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
