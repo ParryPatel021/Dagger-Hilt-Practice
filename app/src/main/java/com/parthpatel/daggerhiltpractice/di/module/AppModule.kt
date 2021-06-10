@@ -66,15 +66,11 @@ object AppModule {
     //Retrofit
     @Singleton
     @Provides
-    fun provideRetrofitInstance(): RetrofitService {
+    fun provideRetrofitInstance(
+        client: OkHttpClient
+    ): RetrofitService {
 
         val BASE_URL = "https://jsonplaceholder.typicode.com/"
-
-        val logger = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
-
-        val client = OkHttpClient.Builder()
-            .addInterceptor(logger)
-            .build()
 
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -83,5 +79,16 @@ object AppModule {
             .build()
             .create(RetrofitService::class.java)
     }
+
+    @Singleton
+    @Provides
+    fun provideOkHttpClientBuilder(): OkHttpClient {
+        val logger = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
+
+        return OkHttpClient.Builder()
+            .addInterceptor(logger)
+            .build()
+    }
+
 
 }

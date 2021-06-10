@@ -2,6 +2,7 @@ package com.parthpatel.daggerhiltpractice.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -56,6 +57,10 @@ class MainActivity : AppCompatActivity() {
         loadImages()
         fetchUserData()
         handleListener()
+
+        repeat(10){
+            Log.e("MainActivity","onCreate()")
+        }
     }
 
     private fun handleListener() {

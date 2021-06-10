@@ -11,6 +11,7 @@
         android:name="com.parthpatel.daggerhiltpractice.fragment.TestFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="gone"
         android:background="@android:color/holo_orange_light"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
